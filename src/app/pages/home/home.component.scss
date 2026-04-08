@@ -1,0 +1,230 @@
+// Reset básico local
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+:host {
+  display: block;
+  // El fondo y color de texto base ya se heredan del body configurado en styles.scss
+  min-height: 100vh;
+}
+
+// --- NAVBAR ---
+.navbar {
+  background-color: var(--bg-navbar);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--brand-mint);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+  }
+}
+
+// Botón Toggle Tema
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Hamburguesa
+.hamburger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 101;
+
+  span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;
+  }
+
+  &.active {
+    span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  }
+}
+
+// Menú Desplegable Móvil
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-navbar);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, background-color 0.3s ease;
+  border-bottom: 1px solid transparent;
+
+  &.open {
+    max-height: 300px;
+    border-color: var(--border-color);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      border-bottom: 1px solid var(--border-color);
+      
+      a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: var(--text-primary);
+        font-weight: 500;
+        transition: color 0.2s ease;
+        
+        &:hover { 
+          color: var(--brand-mint); 
+          // Un fondo muy sutil para el hover
+          background-color: rgba(111, 207, 151, 0.05); 
+        }
+      }
+    }
+  }
+}
+
+// --- CONTENIDO CATÁLOGO ---
+.catalog-container {
+  padding: 20px;
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    text-align: center;
+    transition: color 0.3s ease;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr; // Mobile first
+    gap: 20px;
+
+    .product-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+
+      // Sombra sutil que se adapta un poco según el tema (el navegador la oscurece si es necesario)
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      .img-placeholder {
+        // En modo oscuro este gris claro resaltará mucho, así que usamos un gris intermedio con opacidad
+        background-color: rgba(150, 150, 150, 0.1); 
+        height: 200px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+        border: 1px dashed var(--border-color);
+        overflow: hidden;
+
+        &[src] {
+          display: block;
+          width: 100%;
+          object-fit: fill;
+          border: none;
+        }
+      }
+
+      h3 { 
+        margin-bottom: 10px; 
+        color: var(--text-primary); 
+      }
+      
+      p { 
+        color: var(--text-secondary); 
+        margin-bottom: 15px; 
+        font-size: 0.9rem; 
+      }
+
+      .btn-primary, .btn-secondary {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+
+        &:hover { opacity: 0.9; }
+      }
+
+      .btn-primary {
+        background-color: var(--brand-mint);
+        color: #ffffff; // El texto del botón principal se queda blanco
+      }
+
+      .btn-secondary {
+        // Adaptamos el botón secundario para que funcione en ambos temas
+        background-color: rgba(150, 150, 150, 0.1);
+        color: var(--text-secondary);
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// Pantallas grandes (Desktop)
+@media (min-width: 768px) {
+  .catalog-container {
+    padding: 40px;
+    .product-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+  }
+}

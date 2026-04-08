@@ -1,0 +1,126 @@
+﻿<div class="theme-wrapper" [attr.data-theme]="isDarkMode ? 'dark' : 'light'">
+  
+  <nav class="navbar">
+    <div class="brand">
+      <img class="logo" src="assets/vitalityHub/logo.png" alt="">
+    </div>
+    <button class="theme-toggle-btn" (click)="toggleTheme()" type="button">
+      {{ isDarkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro' }}
+    </button>
+  </nav>
+
+  <section class="hero-banner">
+    <div class="hero-copy">
+      <span class="eyebrow">Promoción exclusiva</span>
+      <h1 class="main-title">Artr3fin x 350 ml</h1>
+      <p class="hero-text">Recupera movilidad, protege tus articulaciones y disfruta una mejor calidad de vida con nuestra fórmula natural premium.</p>
+
+      <div class="hero-badges">
+        <span>🍃 Ingredientes naturales</span>
+        <span>🚚 Envío incluido a nivel nacional</span>
+        <span>💬 Pedido por WhatsApp</span>
+      </div>
+
+      <div class="hero-cta">
+        <strong>Desde $65.000</strong>
+        <span>Promoción 2X por $100.000</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="artr3fin-container">
+    <div class="grid-content">
+      <div class="form-section card">
+        <h2>Haz tu pedido</h2>
+        <p class="form-subtitle">Rellena el formulario y te conectamos por WhatsApp para cerrar tu compra al instante.</p>
+        <form [formGroup]="pedidoForm" (ngSubmit)="onSubmit()" class="formulario-pedido">
+          <div class="form-group">
+            <select formControlName="producto">
+              <option value="" disabled selected>Selecciona tu promoción</option>
+              <option value="Artr3fin - $65.000">Artr3fin - $65.000</option>
+              <option value="Artr3fin Promo 2X - $100.000">Artr3fin Promo 2X - $100.000</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input type="text" formControlName="nombre" placeholder="Nombre completo">
+          </div>
+
+          <div class="form-group row-group">
+            <input type="tel" formControlName="numero" placeholder="Número de contacto">
+            <input type="text" formControlName="departamento" placeholder="Departamento">
+          </div>
+
+          <div class="form-group row-group">
+            <input type="text" formControlName="ciudad" placeholder="Ciudad">
+            <input type="text" formControlName="barrio" placeholder="Barrio">
+          </div>
+
+          <div class="form-group">
+            <input type="text" formControlName="direccion" placeholder="Dirección">
+          </div>
+
+          <div class="form-group">
+            <input type="text" formControlName="detalle" placeholder="Piso, urbanización, bloque">
+          </div>
+
+          <div class="form-group">
+            <input type="email" formControlName="correo" placeholder="Correo electrónico">
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="pedidoForm.invalid">
+            Enviar Pedido a WhatsApp
+          </button>
+        </form>
+      </div>
+
+      <div class="gallery-panel">
+        <div class="feature-card card">
+          <h2>Artr3fin en pocas palabras</h2>
+          <p>La bebida funcional diseñada para articulaciones, huesos y músculos. Ideal para quienes buscan alivio natural y bienestar diario.</p>
+          <ul>
+            <li><strong>Cúrcuma antiinflamatoria</strong> que ayuda a reducir rigidez.</li>
+            <li><strong>Colágeno hidrolizado</strong> para soporte estructural.</li>
+            <li><strong>Calcio y magnesio</strong> para huesos fuertes y músculos relajados.</li>
+          </ul>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="assets/artr3fin/ARTREFIN%20PUBLICIDAD_Mesa%20de%20trabajo%201.png" alt="Publicidad Artr3fin">
+          </div>
+          <div class="gallery-item">
+            <img src="assets/artr3fin/ARTREFIN3_Mesadetrabajo1.jpg" alt="Botella de Artr3fin 350ml">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="description-section">
+      <h3>Descripción del producto</h3>
+      <p>Artr3fin x 350 ml es una bebida funcional elaborada con ingredientes naturales como cúrcuma, calcio, colágeno hidrolizado y magnesio. Está diseñada para apoyar la salud de las articulaciones, los huesos y los músculos.</p>
+
+      <div class="benefit-grid">
+        <div>
+          <h4>Articulaciones</h4>
+          <p>La cúrcuma y el colágeno trabajan juntos para aliviar molestias y mejorar movilidad.</p>
+        </div>
+        <div>
+          <h4>Huesos</h4>
+          <p>El calcio en forma de citrato se absorbe fácil y ayuda a mantener huesos fuertes.</p>
+        </div>
+        <div>
+          <h4>Músculos</h4>
+          <p>El magnesio apoya la función muscular para mayor confort en el día a día.</p>
+        </div>
+      </div>
+
+      <h4>Beneficios:</h4>
+      <ul>
+        <li><strong>Salud de las articulaciones:</strong> La cúrcuma tiene propiedades antiinflamatorias que pueden ayudar a aliviar el dolor y la rigidez. El colágeno hidrolizado también puede mejorar la salud de las articulaciones al estimular la producción de colágeno en el cuerpo.</li>
+        <li><strong>Salud de los huesos:</strong> El calcio es esencial para la salud ósea. El citrato de calcio es una forma de calcio que se absorbe fácilmente por el cuerpo.</li>
+        <li><strong>Salud muscular:</strong> El magnesio es importante para la función muscular. El citrato de magnesio es una forma de magnesio que se absorbe fácilmente por el cuerpo.</li>
+      </ul>
+    </div>
+  </div>
+</div>

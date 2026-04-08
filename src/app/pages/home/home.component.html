@@ -1,0 +1,44 @@
+<header class="navbar">
+  <div class="nav-container">
+    <div class="logo">Vitality Hub</div>
+    
+    <div class="nav-actions">
+      <button class="theme-toggle" (click)="toggleTheme()" aria-label="Cambiar tema">
+        {{ isDarkMode ? '☀️' : '🌙' }}
+      </button>
+
+      <button class="hamburger-btn" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-menu" [class.open]="isMenuOpen">
+    <ul>
+      <li><a routerLink="/" (click)="toggleMenu()">Inicio</a></li>
+      <li><a routerLink="/artr3fin" (click)="toggleMenu()">Artr3fin</a></li>
+      </ul>
+  </nav>
+</header>
+
+<main class="catalog-container">
+  <h1>Nuestros Productos</h1>
+  
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="assets/artr3fin/ARTREFIN3_Mesadetrabajo1.jpg" alt="Imagen Artr3fin" class="img-placeholder">
+      <h3>Artr3fin 350 ML</h3>
+      <p>Salud articular y ósea.</p>
+      <a routerLink="/artr3fin" class="btn-primary">Ver Oferta</a>
+    </div>
+    
+    <div class="product-card">
+      <div class="img-placeholder">Imagen Balance</div>
+      <h3>Colección Balance</h3>
+      <p>Cuidado integral de la piel.</p>
+      <button class="btn-secondary" disabled>Próximamente</button>
+    </div>
+  </div>
+</main>
