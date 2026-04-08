@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.scss */
+
+/* Reset básico global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* TEMA CLARO (Por defecto) */
+  --bg-main: #f9f9f9;
+  --bg-card: #ffffff;
+  --bg-navbar: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #eeeeee;
+  
+  /* Colores de marca (se mantienen o se ajustan ligeramente) */
+  --brand-mint: #6FCF97;
+  --brand-red: #e31e2b; /* Para Artr3fin */
+}
+
+[data-theme="dark"] {
+  /* TEMA OSCURO */
+  --bg-main: #121212;
+  --bg-card: #1e1e1e;
+  --bg-navbar: #1f1f1f;
+  --text-primary: #f1f1f1;
+  --text-secondary: #aaaaaa;
+  --border-color: #333333;
+  
+  /* Puedes opacar o saturar los colores de marca si lo prefieres en modo oscuro */
+  --brand-mint: #5bbd86; 
+}
+
+/* Estilos base del Body aplicando las variables */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  /* Transición suave al cambiar de tema */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
